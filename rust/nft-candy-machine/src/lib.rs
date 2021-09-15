@@ -51,6 +51,10 @@ pub mod nft_candy_machine {
             return Err(ErrorCode::CandyMachineEmpty.into());
         }
 
+        if(isWalletWhitelist(ctx.accounts.wallet.clone())== false)
+            return Err(ErrorCode::WalletWhitelistFailed.into());
+        }
+
         if let Some(mint) = candy_machine.token_mint {
             let token_account_info = &ctx.remaining_accounts[0];
             let transfer_authority_info = &ctx.remaining_accounts[1];
@@ -624,4 +628,20 @@ pub enum ErrorCode {
     CandyMachineNotLiveYet,
     #[msg("Number of config lines must be at least number of items available")]
     ConfigLineMismatch,
+    #[msg("white list error")]
+    WalletWhitelistFailed,
+}
+
+
+pub fn isWalletWhitelist(walletAddress: &str,) -> bool{
+    let mut array: [i32; 3] = [0; 3];
+
+    let result = match walletAddress {
+        // Match a single value
+        "GLrSfzddqjDnDCNQhhShF3HjecQpkowNTEhC5HYyCoHa" |
+        "GLrSfzddqjDnDCNQhhShF3HjecQpkowNTEhC5HYyCoHa" => true,
+        _ => false,
+        // TODO ^ Try commenting out this catch-all arm
+    }
+    return result;
 }
