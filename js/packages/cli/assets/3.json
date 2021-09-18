@@ -1,9 +1,9 @@
 {
-  "name": "Solflare X NFT #0000000",
+  "name": "Solflare X NFT #0000003",
   "symbol": "",
   "description": "Hello world!!!",
   "seller_fee_basis_points": 500,
-  "image": "0.png",
+  "image": "3.png",
   "animation_url": "",
   "external_url": "",
   "attributes": [
@@ -23,7 +23,7 @@
   "properties": {
     "files": [
       {
-        "uri": "0.png",
+        "uri": "3.png",
         "type": "image/png"
       }
     ],
