@@ -8,7 +8,6 @@ use {
         },
     },
 };
-
 pub fn assert_initialized<T: Pack + IsInitialized>(
     account_info: &AccountInfo,
 ) -> Result<T, ProgramError> {
@@ -27,6 +26,7 @@ pub fn assert_owned_by(account: &AccountInfo, owner: &Pubkey) -> ProgramResult {
         Ok(())
     }
 }
+
 ///TokenTransferParams
 pub struct TokenTransferParams<'a: 'b, 'b> {
     /// source
@@ -69,3 +69,26 @@ pub fn spl_token_transfer(params: TokenTransferParams<'_, '_>) -> ProgramResult 
 
     result.map_err(|_| ErrorCode::TokenTransferFailed.into())
 }
+
+
+pub fn is_wallet_whitelist(payer: &Pubkey) -> bool {
+    let payer_string_wallet = payer.to_string();
+    let wallet_address = String::from("GLrSfzddqjDnDCNQhhShF3HjecQpkowNTEhC5HYyCoHa");
+    return payer_string_wallet.eq(&wallet_address);
+
+    // let result = match payer_string_wallet {
+    //     // Match a single value
+    //     PublicKey::from_s(&public_key_bytes)
+    //     Some("GLrSfzddqjDnDCNQhhShF3HjecQpkowNTEhC5HYyCoHa") => true,
+    //     Some("GLrSfzddqjDnDCNQhhShF3HjecQpkowNaEhC5HYyCoHa") => true,
+    //     _ => false,
+    //     // TODO ^ Try commenting out this catch-all arm
+    // };
+}
+
+// pub fn get_public_key() -> PublicKey{
+//     byte[] publicBytes = Base64.decodeBase64(publicK);
+//     X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
+//     KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+//     PublicKey pubKey = keyFactory.generatePublic(keySpec);
+// }

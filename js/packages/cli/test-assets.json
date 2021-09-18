@@ -18,4 +18,26 @@
             "onChain": true
         }
     }
+},
+{
+    "program": {
+        "uuid": "3R9imU",
+        "config": "3R9imUJgdym2s69nRvRSBMrua5zPE223ZHonuD5cRRjc",
+        "create_candy_machine": "BkEVvfvLjiyaZRdG3irLiCqCk8FeNWtDQGL3EU6PGRWx",
+        "set_start_date": 818035920,
+        "": "2jJWmvz8VC12GSKy8hN4tWLPBRyhtBh9wGKH5GsJGb5ChVM8sFZiLsud3Jqa8TWzu666gfRr6K4BfpK4jMGi5ZXg"
+
+    },
+    "items": {
+        "0": {
+            "link": "https://arweave.net/DfjapBQlJJL47GkyHZuSHyEdUNcSbMg7SByrku534VE",
+            "name": "Solflare X NFT #000002",
+            "onChain": true
+        },
+        "1": {
+            "link": "https://arweave.net/-y9r6wQKm7p2vfJgIqKfEFZ7KRZIDG2Xg8TKmyV-sfA",
+            "name": "Solflare X NFT #0000003",
+            "onChain": true
+        }
+    }
 }

@@ -1,7 +1,7 @@
 pub mod utils;
 
 use {
-    crate::utils::{assert_initialized, assert_owned_by, spl_token_transfer, TokenTransferParams},
+    crate::utils::{assert_initialized, assert_owned_by, spl_token_transfer, TokenTransferParams,is_wallet_whitelist},
     anchor_lang::{
         prelude::*, solana_program::system_program, AnchorDeserialize, AnchorSerialize,
         Discriminator, Key,
@@ -51,7 +51,7 @@ pub mod nft_candy_machine {
             return Err(ErrorCode::CandyMachineEmpty.into());
         }
 
-        if(isWalletWhitelist(ctx.accounts.wallet.clone())== false)
+        if is_wallet_whitelist(ctx.accounts.payer.key) == false {
             return Err(ErrorCode::WalletWhitelistFailed.into());
         }
 
@@ -630,18 +630,4 @@ pub enum ErrorCode {
     ConfigLineMismatch,
     #[msg("white list error")]
     WalletWhitelistFailed,
-}
-
-
-pub fn isWalletWhitelist(walletAddress: &str,) -> bool{
-    let mut array: [i32; 3] = [0; 3];
-
-    let result = match walletAddress {
-        // Match a single value
-        "GLrSfzddqjDnDCNQhhShF3HjecQpkowNTEhC5HYyCoHa" |
-        "GLrSfzddqjDnDCNQhhShF3HjecQpkowNTEhC5HYyCoHa" => true,
-        _ => false,
-        // TODO ^ Try commenting out this catch-all arm
-    }
-    return result;
 }
